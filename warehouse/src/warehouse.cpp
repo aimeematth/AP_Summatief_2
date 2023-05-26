@@ -49,24 +49,31 @@ bool Warehouse::rearrangeShelf(Shelf& shelf) {
 
 bool Warehouse::pickItems(std::string itemName, int itemCount) {
     int itemsLeft = itemCount;
+    bool itemsPicked = false;
 
     for (Shelf& shelf : shelves) {
         for (Pallet& pallet : shelf.pallets) {
-            int availableItems = pallet.getItemCount();
-            int itemsToPick = std::min(availableItems, itemsLeft);
+            if (pallet.getItemName() == itemName) {
+                int availableItems = pallet.getItemCount();
+                int itemsToPick = std::min(availableItems, itemsLeft);
 
-            for (int i = 0; i < itemsToPick; i++) {
-                if (!pallet.takeOne()) {
-                    return false;
+                for (int i = 0; i < itemsToPick; i++) {
+                    if (!pallet.takeOne()) {
+                        return false;
+                    }
+                    itemsLeft--;
                 }
-                itemsLeft--;
-            }
 
-            if (itemsLeft == 0) {
-                return true; 
+                if (itemsLeft == 0) {
+                    itemsPicked = true;
+                    break;
+                }
             }
+        }
+        if (itemsPicked) {
+            break;
         }
     }
 
-    return false;
+    return itemsPicked;
 }
