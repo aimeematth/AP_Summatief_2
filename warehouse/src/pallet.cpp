@@ -44,3 +44,18 @@ bool Pallet::putOne() {
     }
     return false;
 }
+
+bool Pallet::isEmpty(){
+    if(getItemCount == 0){
+        return true;
+    }
+    return false;
+    
+}
+
+bool Pallet::isFull(){
+    if(ItemCount == ItemCapacity){
+        return true;
+    }
+    return false;
+}
