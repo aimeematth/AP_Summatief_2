@@ -11,10 +11,9 @@ Shelf::Shelf() {
 }
 
 bool Shelf::swapPallet(int slot, int slot2) {
-    if (slot < 0 || slot >= pallets.size() || slot2 < 0 || slot2 >= pallets.size()) {
-        return false; // Ongeldige slotnummers
-    }
-
-    std::swap(pallets[slot], pallets[slot2]);
+    Pallet pallet1 = this ->pallets[slot];
+    Pallet pallet2 = this ->pallets[slot2];
+    this->pallets[slot] = pallet2;
+    this->pallets[slot2] = pallet1;
     return true;
 }
