@@ -6,7 +6,6 @@
 #include "warehouse.hpp"
 
 Warehouse::Warehouse() {
-    // Lege constructor
 }
 
 void Warehouse::addEmployee(Employee employee) {
@@ -18,7 +17,6 @@ void Warehouse::addShelf(Shelf shelf) {
 }
 
 bool Warehouse::rearrangeShelf(Shelf& shelf) {
-    // Controleer of er een medewerker met een heftruckcertificaat beschikbaar is
     bool employeeFound = false;
     for (Employee& employee : employees) {
         if (!employee.getBusy() && employee.getForkliftCertificate()) {
@@ -29,10 +27,10 @@ bool Warehouse::rearrangeShelf(Shelf& shelf) {
     }
 
     if (!employeeFound) {
-        return false; // Geen geschikte medewerker gevonden
+        return false;
     }
 
-    // Sorteer de pallets oplopend op volgorde van itemcount
+    
     for (int i = 0; i < shelf.pallets.size() - 1; i++) {
         for (int j = 0; j < shelf.pallets.size() - i - 1; j++) {
             if (shelf.pallets[j].getItemCount() > shelf.pallets[j + 1].getItemCount()) {
@@ -41,7 +39,6 @@ bool Warehouse::rearrangeShelf(Shelf& shelf) {
         }
     }
 
-    // Geef de medewerker vrij
     for (Employee& employee : employees) {
         if (employee.getBusy()) {
             employee.setBusy(false);
@@ -53,7 +50,6 @@ bool Warehouse::rearrangeShelf(Shelf& shelf) {
 }
 
 bool Warehouse::pickItems(std::string itemName, int itemCount) {
-    // Verdeel het aantal items over alle pallets op de planken
     int itemsLeft = itemCount;
 
     for (Shelf& shelf : shelves) {
@@ -63,16 +59,16 @@ bool Warehouse::pickItems(std::string itemName, int itemCount) {
 
             for (int i = 0; i < itemsToPick; i++) {
                 if (!pallet.takeOne()) {
-                    return false; // Niet genoeg items op de pallet
+                    return false;
                 }
                 itemsLeft--;
             }
 
             if (itemsLeft == 0) {
-                return true; // Alle items zijn opgehaald
+                return true; 
             }
         }
     }
 
-    return false; // Niet genoeg items beschikbaar op de planken
+    return false;
 }

@@ -1,6 +1,7 @@
 #include <iostream>
+#include "IContainer.hpp"
 
-class Pallet{
+class Pallet: public IContainer{
     private:
         int ItemCount;
         std::string ItemName;
@@ -15,4 +16,6 @@ class Pallet{
         bool reallocateEmptyPallet(std::string ItemName, int ItemCapacity);
         bool takeOne();
         bool putOne();
+        bool isEmpty() override;
+        bool isFull() override;
 };
