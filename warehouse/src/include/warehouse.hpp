@@ -1,8 +1,8 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include "employee.hpp"
 #include "shelf.hpp"
-#include "pallet.hpp"
 
 class Warehouse{
 

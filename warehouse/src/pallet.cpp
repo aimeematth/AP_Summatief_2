@@ -1,4 +1,5 @@
-#include "pallet.hpp"
+#pragma once
+#include "include/pallet.hpp"
 
 Pallet::Pallet(std::string ItemName, int ItemCapacity, int ItemCount){
     this->ItemName = ItemName;
@@ -30,8 +31,8 @@ bool Pallet::reallocateEmptyPallet(std::string ItemName, int ItemCapacity){
 }
 
 bool Pallet::takeOne() {
-    if (ItemCount > 0){
-        ItemCount --;
+    if (this->ItemCount > 0){
+        this->ItemCount --;
         return true;
     }
     return false;
@@ -46,7 +47,7 @@ bool Pallet::putOne() {
 }
 
 bool Pallet::isEmpty(){
-    if(getItemCount == 0){
+    if(getItemCount() == 0){
         return true;
     }
     return false;

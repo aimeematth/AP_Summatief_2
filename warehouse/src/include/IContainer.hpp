@@ -1,5 +1,4 @@
-#include <iostream>
-
+#pragma once
 class IContainer{
     public:
         virtual bool isEmpty() = 0;

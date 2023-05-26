@@ -1,6 +1,5 @@
-#include "shelf.hpp"
-#include "pallet.hpp"
-#include "IContainer.hpp"
+#pragma once
+#include "include/shelf.hpp"
 
 
 Shelf::Shelf() {
@@ -17,3 +16,21 @@ bool Shelf::swapPallet(int slot, int slot2) {
     this->pallets[slot2] = pallet1;
     return true;
 }
+bool Shelf::isEmpty() {
+    for (Pallet& pallet : pallets) {
+        if (!pallet.isEmpty()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Shelf::isFull() {
+    for (Pallet& pallet : pallets) {
+        if (!pallet.isFull()) {
+            return false;
+        }
+    }
+    return true;
+}
+

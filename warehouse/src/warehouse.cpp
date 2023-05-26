@@ -1,9 +1,7 @@
+#pragma once
 #include <iostream>
 #include <vector>
-#include "employee.hpp"
-#include "shelf.hpp"
-#include "pallet.hpp"
-#include "warehouse.hpp"
+#include "include/warehouse.hpp"
 
 Warehouse::Warehouse() {
 }

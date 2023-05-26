@@ -1,4 +1,5 @@
-#include "employee.hpp"
+#pragma once
+#include "include/employee.hpp"
 
 Employee::Employee(std::string name, bool forkliftCertificate)
     : name(name), forkliftCertificate(forkliftCertificate), busy(false) {}
